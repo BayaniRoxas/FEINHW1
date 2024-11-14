@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Homework 1: Tasks for jr479</title>
+</head>
+
+<body>
+<h1>Homework 1: Tasks for jr479</h1>
+
+<p>Your personal task is to develop a system for universities and their researchers.</p>
+
+<h2>Task 1: Configuration [4 marks]</h2>
+<p>Configure the project to support the use of JSPs as view technology. JSPs must be configured to be placed inside folder <code>src/main/webapp/WEB-INF/views/</code>.</p>
+
+<h2>Task 2: Domain Classes [13 marks]</h2>
+
+<p>Create class <code>co2123.hw1.domain.Researcher</code>. With the following private fields:
+<ol>
+  <li><code>String name</code></li>
+  <li><code>String group</code></li>
+  <li><code>String area</code></li>
+  <li><code>int grade</code></li>
+</ol>
+Generate necessary getters and setters. [7 marks]
+</p>
+
+<p>Create class <code>co2123.hw1.domain.University</code>. With the following private fields:
+<ol>
+  <li><code>int id</code></li>
+  <li><code>String chancellor</code></li>
+  <li><code>String campus</code></li>
+  <li><code>List&lt;Researcher&gt; researchers</code></li>
+</ol>
+Generate necessary getters and setters. [6 marks]
+</p>
+
+
+<h2>Task 3: Controller (simple) [5 marks]</h2>
+<p>Create controller <code>co2123.hw1.controller.MainController</code> [2 marks].
+<ol>
+  <li>Requests for URL <code>"/"</code> (POST and GET) should show the view <code>start</code> (the corresponding JSP already exists). [3 marks]</li>
+</ol>
+</p>
+
+<h2>Task 4: Controller, View, and Form [20 marks]</h2>
+
+<p>Create field <code>public static List&lt;University&gt; universities</code> in class <code>co2123.hw1.Hw1Application</code>. Initialize the list inside class <code>co2123.hw1.Hw1Application</code> to contain one university with two researchers. [4 marks]</p>
+
+<p>Create controller <code>co2123.hw1.controller.UniversityController</code> and add methods with request mappings for the following behavior:
+<ol>
+  <li>GET requests for URL <code>"/universities"</code> should show view <code>universities/list</code>. [2 marks]
+    <ul>
+      <li>Add the list of all universities from <code>co2123.hw1.Hw1Application</code> to the model as attribute <code>universities</code>. [2 marks]</li>
+      <li>Create the corresponding JSP to list the chancellor and campus of each university followed by a link to URL <code>"/researchers?university={id of university}"</code>, e.g., <code>"/researchers?university=3"</code>. [4 marks]</li>
+    </ul>
+  </li>
+  <li>Requests for URL <code>"/newUniversity"</code> should show view <code>universities/form</code>. [3 marks] Create the corresponding JSP with a form with <code>modelAttribute="university"</code> and <code>action="/addUniversity"</code> and inputs for all fields of class <code>University</code> except for <code>researchers</code>. [5 marks]</li>
+  <li>POST requests for URL <code>"/addUniversity"</code> should add a new university to the list of all universities in <code>co2123.hw1.Hw1Application</code> and redirect to <code>/universities</code>. [3 marks]</li>
+</ol>
+</p>
+
+<h2>Task 5: Controller, View, and Form with additional Parameter [33 marks]</h2>
+
+<p>Create controller <code>co2123.hw1.controller.ResearcherController</code> and add methods with request mappings for the following behavior:
+<ol>
+  <li>GET requests for URL <code>"/researchers"</code> should show view <code>researchers/list</code>. [2 marks]
+    <ul>
+      <li>Based on request parameter <code>university</code> determine the corresponding university from <code>co2123.hw1.Hw1Application</code>. [2 marks]</li>
+      <li>Add the list of all researchers of that university to the model as attribute <code>researchers</code>. [2 marks]</li>
+      <li>Create the corresponding JSP for the view to list the name, group, area, and grade of each researcher. [4 marks]</li>
+      <li>At the end of the list in the JSP add a link to URL <code>"/newResearcher?university={id of university whose researchers are listed}"</code>, e.g., <code>"/newResearcher?university=3"</code>. [4 marks]</li>
+    </ul>
+  </li>
+  <li>Requests for URL <code>"/newResearcher"</code> should show view <code>researchers/form</code>. [3 marks]
+    <ul>
+      <li>Create the corresponding JSP with a form with <code>modelAttribute="researcher"</code> and <code>action="/addResearcher"</code> and inputs for all fields of class <code>Researcher</code>. [6 marks]</li>
+      <li>Also add the request parameter <code>university</code> with the ID of the current university. [4 marks]</li>
+    </ul>
+  </li>
+  <li>POST requests for URL <code>"/addResearcher"</code> should add a new researcher to the list of researchers of the university identified by request parameter <code>university</code> and then redirect to <code>/universities</code>. [6 marks]</li>
+</ol>
+</p>
+
+<h2>Task 6: Validation [25 marks]</h2>
+
+<p>Set up a validator for class <code>University</code> and make it available in controller <code>UniversityController</code>. [4 marks]</p>
+<p>When adding a new university validate that
+  <ol>
+    <li>The value of field <code>id</code> is unique within the list <code>Hw1Application.universities</code>. [3 marks]</li>
+    <li>The value of field <code>chancellor</code> is not empty. [2 marks]</li>
+    <li>The value of field <code>campus</code> is not empty. [2 marks]</li>
+  </ol>
+  In case of validation errors go back to the form and show error messages for each field in the form.
+</p>
+
+
+<p>Set up a validator for class <code>Researcher</code> and make it available in controller <code>ResearcherController</code>. [4 marks]</p>
+<p>When adding a new researcher validate that
+  <ol>
+    <li>The value of field <code>name</code> is not empty. [2 marks]</li>
+    <li>The value of field <code>group</code> is not empty. [2 marks]</li>
+    <li>The value of field <code>area</code> is either <code>"Human Computer Interaction"</code>, <code>"Machine Learning"</code>, or <code>"Theory"</code>. [3 marks]</li>
+    <li>The value of field <code>grade</code> is between (including) 7 and 10. [3 marks]</li>
+  </ol>
+  In case of validation errors go back to the form and show error messages for each field in the form.
+</p>
+
+</body>
+
+</html>
