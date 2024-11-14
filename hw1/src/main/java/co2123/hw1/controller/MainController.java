@@ -6,18 +6,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
+
 public class MainController {
 
     // Handle GET request
-    @GetMapping
+    @RequestMapping("/")
     public String showStartPage() {
         return "start"; // Returns the "start" view
     }
 
     // Handle POST request to "/"
-    @PostMapping
-    public String handlePostRequest() {
-        return "start"; // Returns the "start" view
-    }
+//    @RequestMapping("/")
+//    public String handlePostRequest() {
+//        return "start"; // Returns the "start" view
+//    }
 }

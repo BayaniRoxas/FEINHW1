@@ -5,7 +5,7 @@
 <html>
 <body>
 <h2>Add New Researcher</h2>
-<form:form action="/researchers/addResearcher?university=${universityId}"  modelAttribute="researcher">
+<form:form action="/addResearcher?university=${universityId}"  modelAttribute="researcher">
 
 
     <form:label path="name">name:</form:label>

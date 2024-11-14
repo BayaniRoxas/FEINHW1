@@ -10,6 +10,6 @@
         </li>
     </c:forEach>
 </ul>
-<a href="/researchers/newResearcher?university=${universityId}">Add New Researcher</a>
+<a href="/newResearcher?university=${universityId}">Add New Researcher</a>
 </body>
 </html>

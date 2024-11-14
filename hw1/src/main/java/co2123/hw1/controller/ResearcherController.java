@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/researchers")
+
 public class ResearcherController {
     // Binds the controller class to the validator class
     @InitBinder
@@ -22,7 +22,7 @@ public class ResearcherController {
     }
 
     // GET request to display list of researchers for a specific university
-    @GetMapping
+    @GetMapping("/researchers")
     public String showResearchers(@RequestParam("university") int universityId, Model model) {
 
         // Loops through the input and the array of universities

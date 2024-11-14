@@ -3,7 +3,7 @@
 <html>
 <body>
 <h2>Add New University</h2>
-<form:form action="/universities/addUniversity" method="post" modelAttribute="university">
+<form:form action="/addUniversity" method="post" modelAttribute="university">
 
     <form:label path="id">ID:</form:label>
     <form:input path="id" type="number"/>

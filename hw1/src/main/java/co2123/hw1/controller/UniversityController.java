@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 // My controller, configuring the mapping URLs
 @Controller
-@RequestMapping("/universities")
+
 public class UniversityController {
 
     @InitBinder
@@ -25,7 +25,7 @@ public class UniversityController {
     }
 
     // GET request to display the list of universities
-    @GetMapping
+    @GetMapping("universities")
     public String showUniversities(Model model) {
         model.addAttribute("universities", Hw1Application.universities);
         return "universities/list"; // Returns the "universities/list" view

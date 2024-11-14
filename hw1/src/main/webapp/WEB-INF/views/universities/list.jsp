@@ -12,7 +12,7 @@
 
     </c:forEach>
 
-    <a href="/universities/newUniversity">new university</a>
+    <a href="/newUniversity">new university</a>
 </ul>
 </body>
 </html>
